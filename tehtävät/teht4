@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#source special variables : https://www.tutorialspoint.com/unix/unix-special-variables.htm
+# https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html 
+#this prints the start variables
+echo "all special parameters"
+echo '$*'
+echo '$$'
+echo '$@'
+echo '$#'
+echo '$-'
+echo '$?'
+echo '$!'
+echo ""
+
+echo "number of commandline arguments: $#"
+echo "PID of current shell: $$"
+echo "Exit status of the previous command: $?"
+echo "All arguments using:$*"
+echo '$* was used'
+echo ""
+echo "All arguments using: $@"
+echo '$@ was used'
+echo ""
+echo "The process number of the last background command: $!"
+
+
+echo "Startup parameters:"
+echo "Logged user: $LOGNAME"
+echo "Session desktop: $XDG_SESSION_DESKTOP"
+echo "Current directory: $PWD"
+count=1
+echo "Filename: $0"
+for variable in $*; do
+	echo "Commandlien arguments $count: $variable"
+	count=$((count + 1))
+done
+echo ""
+echo "all environment variables"
+printenv
